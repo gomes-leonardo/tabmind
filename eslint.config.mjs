@@ -40,11 +40,11 @@ export default defineConfig([
   },
   pluginReact.configs.flat.recommended,
   {
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-uses-react": "off",
+    },
     settings: {
-      rules: {
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-uses-react": "off",
-      },
       react: {
         version: "detect",
       },
