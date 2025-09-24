@@ -7,8 +7,9 @@ import eslintConfigPrettier from "eslint-config-prettier";
 
 export default defineConfig([
   {
-    ignores: [".next/**", "node_modules/**"],
-
+    ignores: ["**/node_modules/**", "**/.next/**"],
+  },
+  {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     plugins: { js },
     extends: ["js/recommended"],
