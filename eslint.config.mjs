@@ -6,8 +6,8 @@ import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default defineConfig([
-    { 
-    ignores: ["**/node_modules/**", "**/.next/**"] 
+  {
+    ignores: ["**/node_modules/**", "**/.next/**"],
   },
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
