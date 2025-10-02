@@ -5,7 +5,7 @@ beforeAll(async () => {
   await orchestrator.clearDatabase();
 });
 
-describe("PUT /api/v1/migrations", () => {
+describe("Method Not Allowed - PUT /api/v1/migrations - should return 405", () => {
   describe("Anonymous user", () => {
     test("Running pending migrations", async () => {
       const response = await fetch("http://localhost:3000/api/v1/migrations", {
