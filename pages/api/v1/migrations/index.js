@@ -22,7 +22,7 @@ function onErrorHandler(error, request, response) {
     cause: error,
   });
 
-  console.log("/n Erro do catch no next-connect: do /api/v1/status");
+  console.log("/n Erro do catch no next-connect");
   console.log(publicErrorObject);
   return response.status(publicErrorObject.statusCode).json(publicErrorObject);
 }
