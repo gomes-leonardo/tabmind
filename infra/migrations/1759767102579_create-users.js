@@ -24,11 +24,11 @@ exports.up = (pgm) => {
       notNull: true,
     },
     //Why timestamp with time zone (tz) -> https://justatheory.com/2012/04/postgres-use-timestamptz/
-    createdAt: {
+    created_at: {
       type: "timestamptz",
       default: pgm.func("now()"),
     },
-    updatedAt: {
+    updated_at: {
       type: "timestamptz",
       default: pgm.func("now()"),
     },
