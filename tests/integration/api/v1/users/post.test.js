@@ -39,6 +39,7 @@ describe("POST /api/v1/users", () => {
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
     });
+
     test("With duplicated 'email'", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
@@ -77,6 +78,7 @@ describe("POST /api/v1/users", () => {
         statusCode: 400,
       });
     });
+
     test("With duplicated 'username'", async () => {
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
