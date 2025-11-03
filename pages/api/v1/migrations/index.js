@@ -14,7 +14,7 @@ export default router.handler({
 
 function onNoMatchHandler(request, response) {
   const publicErrorObject = new MethodNotAllowedError();
-  response.status(publicErrorObject.statusCode).json(publicErrorObject);
+  response.status(publicErrorObject.status_code).json(publicErrorObject);
 }
 
 function onErrorHandler(error, request, response) {
@@ -24,7 +24,7 @@ function onErrorHandler(error, request, response) {
 
   console.log("/n Erro do catch no next-connect");
   console.log(publicErrorObject);
-  return response.status(publicErrorObject.statusCode).json(publicErrorObject);
+  return response.status(publicErrorObject.status_code).json(publicErrorObject);
 }
 async function getHandler(request, response) {
   const pendingMigrations = await migrator.listPendingMigrations();
