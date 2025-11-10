@@ -25,7 +25,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         name: "NotFoundError",
         message: "O Username informado não foi encontrado no sistema.",
         action: "Verifique se o username está digitado corretamente.",
-        statusCode: 404,
+        status_code: 404,
       });
     });
 
@@ -79,7 +79,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         name: "ValidationError",
         message: "O username informado já está sendo utilizado.",
         action: "Utilize outro username para realizar esta operação.",
-        statusCode: 400,
+        status_code: 400,
       });
     });
 
@@ -112,7 +112,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         name: "ValidationError",
         message: "O e-mail informado já está sendo utilizado.",
         action: "Utilize outro e-mail para realizar esta operação.",
-        statusCode: 400,
+        status_code: 400,
       });
     });
 

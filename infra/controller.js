@@ -2,25 +2,29 @@ import {
   InternalServerError,
   MethodNotAllowedError,
   NotFoundError,
+  UnauthorizedError,
   ValidationError,
 } from "infra/errors";
 
 function onNoMatchHandler(request, response) {
   const publicErrorObject = new MethodNotAllowedError();
-  response.status(publicErrorObject.statusCode).json(publicErrorObject);
+  response.status(publicErrorObject.status_code).json(publicErrorObject);
 }
 
 function onErrorHandler(error, request, response) {
-  if (error instanceof ValidationError || error instanceof NotFoundError) {
-    return response.status(error.statusCode).json(error);
+  if (
+    error instanceof ValidationError ||
+    error instanceof NotFoundError ||
+    error instanceof UnauthorizedError
+  ) {
+    return response.status(error.status_code).json(error);
   }
   const publicErrorObject = new InternalServerError({
-    statusCode: error.statusCode,
     cause: error,
   });
 
   console.log(publicErrorObject);
-  return response.status(publicErrorObject.statusCode).json(publicErrorObject);
+  return response.status(publicErrorObject.status_code).json(publicErrorObject);
 }
 
 const controller = {

@@ -21,7 +21,13 @@ function getNumberOfRounds() {
 }
 
 async function compare(providedPassword, storedPassword) {
-  return await bcryptjs.compare(providedPassword, storedPassword);
+  if (!PEPPER) {
+    throw new InternalServerError({
+      message: "Erro interno ao processar autenticação.",
+      cause: new Error("Pepper não configurada ou não encontrada."),
+    });
+  }
+  return await bcryptjs.compare(providedPassword + PEPPER, storedPassword);
 }
 
 const password = {

@@ -73,7 +73,7 @@ describe("GET /api/v1/users/[username]", () => {
         name: "NotFoundError",
         message: "O Username informado não foi encontrado no sistema.",
         action: "Verifique se o username está digitado corretamente.",
-        statusCode: 404,
+        status_code: 404,
       });
     });
   });
