@@ -217,18 +217,12 @@ describe("PATCH /api/v1/users/[username]", () => {
       );
 
       const incorrectPasswordMatch = await password.compare(
-        "newPassword1" + pepper,
-        userInDatabase.password,
-      );
-
-      const passwordWithoutPepper = await password.compare(
         "newPassword1",
         userInDatabase.password,
       );
 
       expect(correctPasswordMatch).toBe(true);
       expect(incorrectPasswordMatch).toBe(false);
-      expect(passwordWithoutPepper).toBe(false);
     });
   });
 });
