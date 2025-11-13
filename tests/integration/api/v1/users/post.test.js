@@ -42,26 +42,19 @@ describe("POST /api/v1/users", () => {
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
 
       const userInDatabase = await user.findOneByUsername("gomesleo");
-      const pepper = process.env.AUTH_PEPPER;
 
       const correctPasswordMatch = await password.compare(
-        "senha123" + pepper,
+        "senha123",
         userInDatabase.password,
       );
 
       const incorrectPasswordMatch = await password.compare(
-        "SenhaErrada" + pepper,
-        userInDatabase.password,
-      );
-
-      const passwordWithoutPepper = await password.compare(
         "SenhaErrada",
         userInDatabase.password,
       );
 
       expect(correctPasswordMatch).toBe(true);
       expect(incorrectPasswordMatch).toBe(false);
-      expect(passwordWithoutPepper).toBe(false);
     });
 
     test("With duplicated 'email'", async () => {
