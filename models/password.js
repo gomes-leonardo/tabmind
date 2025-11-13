@@ -33,6 +33,7 @@ async function compare(providedPassword, storedPassword) {
 const password = {
   hash,
   compare,
+  PEPPER,
 };
 
 export default password;
