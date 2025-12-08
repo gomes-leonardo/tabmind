@@ -36,7 +36,7 @@ describe("GET /api/v1/user", () => {
       });
 
       //Session renewal assertions
-
+      const cacheControl = response.headers.get("Cache-Control");
       const renewedSessionObject = await session.findOneValidByToken(
         sessionObject.token,
       );
@@ -45,6 +45,9 @@ describe("GET /api/v1/user", () => {
       );
       expect(renewedSessionObject.updated_at > sessionObject.updated_at).toBe(
         true,
+      );
+      expect(cacheControl).toBe(
+        "no-store, no-cache, max-age=0, must revalidate",
       );
 
       //Set-Cookies assertions
